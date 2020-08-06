@@ -28,6 +28,13 @@
     "react-app-e2e": {
       "tags": [],
       "implicitDependencies": ["react-app"]
+    },
+    "next-app": {
+      "tags": []
+    },
+    "next-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["next-app"]
     }
   }
 }
