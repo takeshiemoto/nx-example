@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const StyledApp = styled.div`
   font-family: sans-serif;
@@ -138,7 +139,10 @@ export const Index = () => {
    */
   return (
     <StyledApp>
-      <h1>Hell world</h1>
+      Learn{' '}
+      <Link href='/posts/first-post'>
+        <a>this page!</a>
+      </Link>
     </StyledApp>
   );
 };
