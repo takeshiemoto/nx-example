@@ -35,6 +35,16 @@
     "next-app-e2e": {
       "tags": [],
       "implicitDependencies": ["next-app"]
+    },
+    "next-blog": {
+      "tags": []
+    },
+    "next-blog-e2e": {
+      "tags": [],
+      "implicitDependencies": ["next-blog"]
+    },
+    "api": {
+      "tags": []
     }
   }
 }
