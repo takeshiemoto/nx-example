@@ -359,6 +359,93 @@
           }
         }
       }
+    },
+    "next-vercel-deploy": {
+      "root": "apps/next-vercel-deploy",
+      "sourceRoot": "apps/next-vercel-deploy",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/next:build",
+          "options": {
+            "root": "apps/next-vercel-deploy",
+            "outputPath": "dist/apps/next-vercel-deploy"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "next-vercel-deploy:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "next-vercel-deploy:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "builder": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "next-vercel-deploy:build:production"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/next-vercel-deploy/tsconfig.json",
+              "apps/next-vercel-deploy/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/next-vercel-deploy/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/next-vercel-deploy/jest.config.js",
+            "tsConfig": "apps/next-vercel-deploy/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "next-vercel-deploy-e2e": {
+      "root": "apps/next-vercel-deploy-e2e",
+      "sourceRoot": "apps/next-vercel-deploy-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/next-vercel-deploy-e2e/cypress.json",
+            "tsConfig": "apps/next-vercel-deploy-e2e/tsconfig.e2e.json",
+            "devServerTarget": "next-vercel-deploy:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "next-vercel-deploy:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["apps/next-vercel-deploy-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/next-vercel-deploy-e2e/**/*"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

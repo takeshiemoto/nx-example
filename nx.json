@@ -48,6 +48,13 @@
     },
     "data": {
       "tags": []
+    },
+    "next-vercel-deploy": {
+      "tags": []
+    },
+    "next-vercel-deploy-e2e": {
+      "tags": [],
+      "implicitDependencies": ["next-vercel-deploy"]
     }
   }
 }

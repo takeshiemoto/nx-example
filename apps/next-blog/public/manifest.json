@@ -1,0 +1,8 @@
+{
+  "name": "next-blog",
+  "theme_color": "#1d7bc6",
+  "background_color": "#063962",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/"
+}

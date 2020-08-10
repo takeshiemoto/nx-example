@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import fetch from 'node-fetch';
 import { Article } from '@nx-example/data';
@@ -24,7 +24,7 @@ export const ArticlesPage = ({ articles }: ArticlesPageProps) => {
 export default ArticlesPage;
 
 const basePath = `http://localhost:3333`;
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const response = await fetch(`${basePath}/api/articles`);
   const articles = (await response.json()) as Article[];
   return {

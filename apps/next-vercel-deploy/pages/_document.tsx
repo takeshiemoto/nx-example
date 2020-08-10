@@ -21,8 +21,7 @@ export default class CustomDocument extends Document<{
     return (
       <html>
         <Head>
-          <title>Welcome to next-blog!</title>
-          <link rel="manifest" href="/manifest.json" />
+          <title>Welcome to next-vercel-deploy!</title>
           {this.props.styleTags}
         </Head>
         <body>
