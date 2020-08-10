@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import useSWR from 'swr';
 import { Article } from '@nx-example/data';
 import Link from 'next/link';
+import ArticleList from '../components/article-list';
 
 const fetcher = (url: string) => fetch(url).then((response) => response.json());
 
@@ -15,17 +16,10 @@ export const DashboardPage = () => {
     if (!data) {
       return <div>Loading...</div>;
     }
+    const articles = data.slice(0, displayCount);
     return (
       <>
-        <ul>
-          {data.slice(0, displayCount).map((article) => (
-            <li key={article.id}>
-              <Link href={`/article/[id]`} as={`/article/${article.id}`}>
-                <a>{article.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <ArticleList articles={articles} />
         <Link href={`/articles`}>
           <a>More...</a>
         </Link>

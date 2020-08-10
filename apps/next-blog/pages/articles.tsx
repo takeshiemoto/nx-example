@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import fetch from 'node-fetch';
 import { Article } from '@nx-example/data';
+import ArticleList from '../components/article-list';
 
 export interface ArticlesPageProps {
   articles: Article[];
@@ -12,11 +13,7 @@ export const ArticlesPage = ({ articles }: ArticlesPageProps) => {
   return (
     <>
       <h2>Articles</h2>
-      <ul>
-        {articles.map((article) => (
-          <li key={article.id}>{article.title}</li>
-        ))}
-      </ul>
+      <ArticleList articles={articles} />
       <Link href={`/dashboard`}>
         <a>Back</a>
       </Link>
